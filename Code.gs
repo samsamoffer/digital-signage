@@ -14,7 +14,7 @@ function doGet() {
         id: file.getId(),
         name: file.getName(),
         updated: updated,
-        url: `https://drive.google.com/uc?export=download&id=${file.getId()}`
+        url: `https://drive.google.com/thumbnail?id=${file.getId()}&sz=w1920`
       });
     }
   }

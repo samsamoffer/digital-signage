@@ -48,9 +48,10 @@ async function loadDonors() {
     const response = await fetch(CONFIG.donorsSheet, { cache: "no-store" });
     if (!response.ok) throw new Error("Donors sheet failed");
     const text = await response.text();
-    const rows = text.trim().split(/\r?\n/).slice(1);
-    const donors = rows.map(r => r.trim().replace(/^"|"$/g, "")).filter(Boolean);
-    const message = donors.length ? donors.join(" | ") : "No donors";
+    const rows = text.trim().split(/\r?\n/);
+    const title = rows[0]?.trim() || "Donors";
+    const donors = rows.slice(1).map(r => r.trim().replace(/^"|"$/g, "")).filter(Boolean);
+    const message = donors.length ? `${title}: ${donors.join(" | ")}` : `${title}: No donors`;
     rssElement.textContent = message;
   } catch (err) {
     console.error("Donors load error:", err);

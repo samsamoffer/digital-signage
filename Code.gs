@@ -14,7 +14,7 @@ function doGet() {
         id: file.getId(),
         name: file.getName(),
         updated: updated,
-        url: `https://drive.google.com/thumbnail?id=${file.getId()}&sz=w1920`
+        url: `https://lh3.googleusercontent.com/d/${file.getId()}`
       });
     }
   }

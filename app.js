@@ -14,10 +14,16 @@ async function loadPosters() {
       lastUpdated = data.lastUpdated;
       posters = data.posters || [];
       currentPoster = 0;
-      if (posters.length > 0) showPoster();
+      if (posters.length > 0) {
+        showPoster();
+      } else {
+        posterElement.removeAttribute("src");
+        posterElement.alt = "No posters found";
+      }
     }
   } catch (err) {
     console.error("Poster load error:", err);
+    posterElement.removeAttribute("src");
     posterElement.alt = "Posters unavailable";
   }
 }
@@ -62,7 +68,6 @@ async function loadDonors() {
 async function init() {
   await loadPosters();
   await loadDonors();
-  if (posters.length > 0) posterElement.src = posters[0].url;
 }
 
 init();

@@ -1,0 +1,34 @@
+#poster {
+  width: 100%;
+  height: 100vh;
+  object-fit: contain;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  background: black;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.rss-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 10px;
+  font-size: 24px;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.rss-text {
+  white-space: nowrap;
+  animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
